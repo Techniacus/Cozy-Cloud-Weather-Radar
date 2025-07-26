@@ -37,14 +37,21 @@
     font-size: 3em;
     font-weight: 700; 
     margin-bottom: 20px;
+
+    /* ★ ADDED STYLES FOR THE BOX ★ */
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+    padding: 10px 25px; /* Adds space inside the box */
+    border-radius: 20px; /* Creates the soft, rounded corners */
+    display: inline-block; /* Ensures the box only wraps the text */
+    box-shadow: 0 2px 8px rgba(52, 71, 50, 0.2); /* A subtle shadow */
   }
 
   #map-container {
       position: relative;
-      /* CHANGE: Use viewport width to be responsive, but cap it at 1000px for large screens */
+      /* Use viewport width to be responsive, but cap it at 1000px for large screens */
       width: 95vw;
       max-width: 1000px;
-      /* CHANGE: Use viewport height so it fits on mobile screens, but cap it for large screens */
+      /* Use viewport height so it fits on mobile screens, but cap it for large screens */
       height: 70vh;
       max-height: 800px;
       border-radius: 8px;
@@ -85,15 +92,22 @@
       display: none;
   }
 
-/* ADDED: Media query for mobile devices (screens up to 768px wide) */
+/* Media query for mobile devices (screens up to 768px wide) */
 @media (max-width: 768px) {
   .main-title {
     /* Make the title smaller on mobile */
     font-size: 2.2em;
+    /* Adjust padding for the smaller font size */
+    padding: 8px 18px;
   }
 
   body {
     /* Reduce the margins on mobile to give content more space */
     margin: 10px;
+  }
+
+  #map-container {
+    /* Make the map taller on mobile screens (85% of viewport height) */
+    height: 85vh; 
   }
 }
