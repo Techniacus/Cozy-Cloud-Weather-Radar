@@ -9,15 +9,10 @@
   body {
       font-family: sans-serif;
       
-      /* Fallback color */
-      background-color: #f3e3cb; 
-      
-      /* The overlay and the background image. Adjust the 0.6 to change the opacity of the overlay. */
       background-image: 
           linear-gradient(rgba(243, 227, 203, 0.6), rgba(243, 227, 203, 0.6)),
-          url('images/ghibli_clouds.jpg'); /* <-- REPLACE WITH YOUR IMAGE URL */
+          url('images/ghibli_clouds.jpg');
       
-      /* Styling for the background image */
       background-size: cover; 
       background-repeat: no-repeat; 
       background-position: center center;
@@ -25,35 +20,41 @@
   
       color: #344732;
       text-align: center;
-      margin: 20px;
+      
+      /* ★ CHANGE: Set a fixed viewport height and use flexbox for the layout */
+      margin: 0;
+      height: 100vh;
+      box-sizing: border-box; /* Include padding in height calculation */
+      padding: 20px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
   }
   
-/* Style the title using the class we added in the HTML */
 .main-title {
     font-family: 'Nunito', sans-serif;
     font-size: 3em;
     font-weight: 700; 
     margin-bottom: 20px;
-
-    /* ★ ADDED STYLES FOR THE BOX ★ */
-    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
-    padding: 10px 25px; /* Adds space inside the box */
-    border-radius: 20px; /* Creates the soft, rounded corners */
-    display: inline-block; /* Ensures the box only wraps the text */
-    box-shadow: 0 2px 8px rgba(52, 71, 50, 0.2); /* A subtle shadow */
+    background-color: rgba(255, 255, 255, 0.85); 
+    padding: 10px 25px; 
+    border-radius: 20px; 
+    display: inline-block; 
+    box-shadow: 0 2px 8px rgba(52, 71, 50, 0.2);
+    /* ★ ADDED: Prevent title from being shrunk by flexbox */
+    flex-shrink: 0;
   }
 
   #map-container {
       position: relative;
-      /* Use viewport width to be responsive, but cap it at 1000px for large screens */
-      width: 95vw;
+      width: 100%;
       max-width: 1000px;
-      /* Use viewport height so it fits on mobile screens, but cap it for large screens */
-      height: 70vh;
-      max-height: 800px;
+
+      /* ★ CORE CHANGE: These rules are now consistent for ALL screen sizes */
+      flex-grow: 1; /* This makes the container fill the available vertical space */
+      min-height: 0; /* A flexbox hack to prevent content from breaking flex calculations */
+      
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 4px 12px #344732;
@@ -64,7 +65,6 @@
       height: 100%;
   }
   
-  /* Height adjusts the thickness of the sweep line */
   #sweep-line {
       position: absolute;
       width: 50%;
@@ -86,6 +86,8 @@
       margin-top: 15px;
       font-size: 0.9em;
       color: #666;
+      /* ★ ADDED: Prevent status from being shrunk by flexbox */
+      flex-shrink: 0;
   }
   
   .leaflet-control-attribution {
@@ -94,20 +96,14 @@
 
 /* Media query for mobile devices (screens up to 768px wide) */
 @media (max-width: 768px) {
+  body {
+    /* We only need to adjust the padding. The map layout is now robust. */
+    padding: 15px;
+  }
+
   .main-title {
-    /* Make the title smaller on mobile */
     font-size: 2.2em;
-    /* Adjust padding for the smaller font size */
     padding: 8px 18px;
   }
 
-  body {
-    /* Reduce the margins on mobile to give content more space */
-    margin: 10px;
-  }
-
-  #map-container {
-    /* Make the map taller on mobile screens (85% of viewport height) */
-    height: 85vh; 
-  }
 }
