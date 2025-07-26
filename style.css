@@ -41,8 +41,12 @@
 
   #map-container {
       position: relative;
-      width: 1000px;
-      height: 800px;
+      /* CHANGE: Use viewport width to be responsive, but cap it at 1000px for large screens */
+      width: 95vw;
+      max-width: 1000px;
+      /* CHANGE: Use viewport height so it fits on mobile screens, but cap it for large screens */
+      height: 70vh;
+      max-height: 800px;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 4px 12px #344732;
@@ -80,3 +84,16 @@
   .leaflet-control-attribution {
       display: none;
   }
+
+/* ADDED: Media query for mobile devices (screens up to 768px wide) */
+@media (max-width: 768px) {
+  .main-title {
+    /* Make the title smaller on mobile */
+    font-size: 2.2em;
+  }
+
+  body {
+    /* Reduce the margins on mobile to give content more space */
+    margin: 10px;
+  }
+}
