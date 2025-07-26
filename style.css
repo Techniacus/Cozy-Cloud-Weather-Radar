@@ -21,10 +21,9 @@
       color: #344732;
       text-align: center;
       
-      /* ★ CHANGE: Set a fixed viewport height and use flexbox for the layout */
       margin: 0;
       height: 100vh;
-      box-sizing: border-box; /* Include padding in height calculation */
+      box-sizing: border-box; 
       padding: 20px;
 
       display: flex;
@@ -42,7 +41,6 @@
     border-radius: 20px; 
     display: inline-block; 
     box-shadow: 0 2px 8px rgba(52, 71, 50, 0.2);
-    /* ★ ADDED: Prevent title from being shrunk by flexbox */
     flex-shrink: 0;
   }
 
@@ -51,9 +49,8 @@
       width: 100%;
       max-width: 1000px;
 
-      /* ★ CORE CHANGE: These rules are now consistent for ALL screen sizes */
-      flex-grow: 1; /* This makes the container fill the available vertical space */
-      min-height: 0; /* A flexbox hack to prevent content from breaking flex calculations */
+      flex-grow: 1; 
+      min-height: 0; 
       
       border-radius: 8px;
       overflow: hidden;
@@ -86,7 +83,6 @@
       margin-top: 15px;
       font-size: 0.9em;
       color: #666;
-      /* ★ ADDED: Prevent status from being shrunk by flexbox */
       flex-shrink: 0;
   }
   
@@ -97,13 +93,13 @@
 /* Media query for mobile devices (screens up to 768px wide) */
 @media (max-width: 768px) {
   body {
-    /* We only need to adjust the padding. The map layout is now robust. */
-    padding: 15px;
+    /* Increase the padding to give more space around the edges on mobile. */
+    /* You can adjust this value. */
+    padding: 25px;
   }
 
   .main-title {
     font-size: 2.2em;
     padding: 8px 18px;
   }
-
 }
